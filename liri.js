@@ -2,7 +2,7 @@ console.log("this is liri");
 require("dotenv").config();
 var keys = require("./keys.js");
 var Spotify = require("node-spotify-api");
-// var request = require("request");
+var request = require("request");
 // var fs = require("fs");
 
 var spotify = new Spotify(keys.spotify);
@@ -29,12 +29,6 @@ var callSpotify = function () {
       return console.log('Error occurred: ' + err);
         }
         // console.log(data.tracks.items[0]); 
-
-        // if (search != undefined) {
-        // var songTitle = data.tracks.items[0].name;
-        // var artistName = data.tracks.items[0].artists[0].name;
-        // var previewURL = data.tracks.items[0].preview_url
-        // }
 
         // var songs = data.tracks.items[0];
         //     for (var i = 0; i < songs.length; i++);
@@ -71,13 +65,31 @@ var callBands = function (artists) {
 }
     
 
-//   var callOmdb = function (movie) {
-//     if (song === undefined) {
-//         song = "Happy";
-
-//     }
-// }
+  var callOmdb = function (movie) {
+    if (search === undefined) {
+        callOmdb = "Mr. Nobody";
+    } else {
+      callOmdb = search;
+    };
   
+    var queryUrl = "http://www.omdbapi.com/?t=" + callOmdb + "&y=&plot=short&apikey=trilogy";
+    
+    request(queryUrl, function (error, response, body) {
+
+        if (!error && response.statusCode === 200) {
+            var body = JSON.parse(body);
+
+            console.log("Title: " + body.Title);
+            console.log("Year Released: " + body.Year);
+            console.log("IMDB Rating: " + body.imdbRating);
+            console.log("Country: " + body.Country);
+            console.log("Language: " + body.Language);
+            console.log("Plot: " + body.Plot);
+            console.log("Actors: " + body.Actors);
+        }
+    });
+  };
+    
   if (command === "spotify-this-song") {
       console.log("spotify");
     //   console.log(callSpotify);
