@@ -16,5 +16,14 @@
   "bugs": {
     "url": "https://github.com/anniestew/liri-node-app/issues"
   },
-  "homepage": "https://github.com/anniestew/liri-node-app#readme"
+  "homepage": "https://github.com/anniestew/liri-node-app#readme",
+  "dependencies": {
+    "axios": "^0.18.0",
+    "bandsintown": "^1.0.1",
+    "bit_js": "^3.0.0",
+    "dotenv": "^7.0.0",
+    "node-spotify-api": "^1.1.1",
+    "omdb": "^0.8.0",
+    "spotify": "^0.3.0"
+  }
 }
